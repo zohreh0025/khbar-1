@@ -7,6 +7,12 @@ import android.view.ViewGroup;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsViewHolder> {
 
+    private NewsData[] newsArray;
+
+    public NewsAdapter(NewsData[] newsArray) {
+        this.newsArray = newsArray;
+    }
+
     @Override
     public NewsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -17,11 +23,12 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsViewHolder> {
 
     @Override
     public void onBindViewHolder(NewsViewHolder holder, int position) {
-        holder.bind("Fire in Austrlia " + String.valueOf(position));
+        NewsData data = newsArray[position];
+        holder.bind(data);
     }
 
     @Override
     public int getItemCount() {
-        return 30;
+        return newsArray.length;
     }
 }
