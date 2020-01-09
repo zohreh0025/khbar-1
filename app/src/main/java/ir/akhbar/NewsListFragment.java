@@ -32,7 +32,11 @@ public class NewsListFragment extends Fragment {
         NewsAdapter adapter = new NewsAdapter(newsArray, new NewsItemClickListener() {
             @Override
             public void onClick(NewsData data) {
-                System.out.println(data.getTitle());
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .addToBackStack(null)
+                        .replace(R.id.fragmentContainer, new NewsDetailFragment())
+                        .commit();
             }
         });
         newsRecycler.setAdapter(adapter);
