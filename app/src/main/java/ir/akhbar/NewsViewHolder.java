@@ -19,14 +19,17 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
     private TextView description;
     private ImageView newsImage;
 
-    public NewsViewHolder(View itemView) {
+    private NewsItemClickListener itemClickListener;
+
+    public NewsViewHolder(View itemView, NewsItemClickListener itemClickListener) {
         super(itemView);
         title = (TextView) itemView.findViewById(R.id.title);
         description = (TextView) itemView.findViewById(R.id.description);
         newsImage = (ImageView) itemView.findViewById(R.id.newsImage);
+        this.itemClickListener = itemClickListener;
     }
 
-    public void bind(NewsData newsData) {
+    public void bind(final NewsData newsData) {
         title.setText(newsData.getTitle());
         description.setText(newsData.getDescription());
 
@@ -34,5 +37,12 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
                 .load(newsData.getImage())
                 .fitCenter()
                 .into(newsImage);
+
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemClickListener.onClick(newsData);
+            }
+        });
     }
 }

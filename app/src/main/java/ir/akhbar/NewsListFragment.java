@@ -29,7 +29,12 @@ public class NewsListFragment extends Fragment {
                 new NewsData("Akhbar 1", "Akhbar 1 desc Akhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 desc", "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"),
                 new NewsData("Akhbar 2", "Akhbar 2 desc", "https://raw.githubusercontent.com/PHELAT/Poolakey/master/asset/Poolakey.jpg")
         };
-        NewsAdapter adapter = new NewsAdapter(newsArray);
+        NewsAdapter adapter = new NewsAdapter(newsArray, new NewsItemClickListener() {
+            @Override
+            public void onClick(NewsData data) {
+                System.out.println(data.getTitle());
+            }
+        });
         newsRecycler.setAdapter(adapter);
     }
 }
