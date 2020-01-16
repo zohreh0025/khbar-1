@@ -8,8 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
 public class NewsListFragment extends Fragment {
 
@@ -25,17 +23,17 @@ public class NewsListFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         RecyclerView newsRecycler = (RecyclerView) view.findViewById(R.id.newsRecycler);
         newsRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        NewsData[] newsArray = new NewsData[]{
-                new NewsData("Akhbar 1", "Akhbar 1 desc Akhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 descAkhbar 1 desc", "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"),
-                new NewsData("Akhbar 2", "Akhbar 2 desc", "https://raw.githubusercontent.com/PHELAT/Poolakey/master/asset/Poolakey.jpg")
-        };
-        NewsAdapter adapter = new NewsAdapter(newsArray, new NewsItemClickListener() {
+
+        Networking networking = new Networking();
+        networking.getNewsList();
+
+        /*NewsAdapter adapter = new NewsAdapter(newsArray, new NewsItemClickListener() {
             @Override
             public void onClick(NewsData data) {
                 Bundle bundle = new Bundle();
-                bundle.putString("newsTitle", data.getTitle());
-                bundle.putString("newsDescription", data.getDescription());
-                bundle.putString("newsImage", data.getImage());
+                bundle.putString("newsTitle", data.getNewsTitle());
+                bundle.putString("newsDescription", data.getNewsDescription());
+                bundle.putString("newsImage", data.getNewsImage());
                 NewsDetailFragment detailFragment = new NewsDetailFragment();
                 detailFragment.setArguments(bundle);
                 getActivity().getSupportFragmentManager()
@@ -45,6 +43,6 @@ public class NewsListFragment extends Fragment {
                         .commit();
             }
         });
-        newsRecycler.setAdapter(adapter);
+        newsRecycler.setAdapter(adapter);*/
     }
 }

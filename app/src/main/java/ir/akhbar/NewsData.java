@@ -2,25 +2,25 @@ package ir.akhbar;
 
 public class NewsData {
 
-    private String title;
-    private String description;
-    private String image;
+    private String newsTitle;
+    private String newsDescription;
+    private String newsImage;
 
-    public NewsData(String title, String description, String image) {
-        this.title = title;
-        this.description = description;
-        this.image = image;
+    public NewsData(String newsTitle, String newsDescription, String newsImage) {
+        this.newsTitle = newsTitle;
+        this.newsDescription = newsDescription;
+        this.newsImage = newsImage;
     }
 
-    public String getTitle() {
-        return title;
+    public String getNewsTitle() {
+        return newsTitle;
     }
 
-    public String getDescription() {
-        return description;
+    public String getNewsDescription() {
+        return newsDescription;
     }
 
-    public String getImage() {
-        return image;
+    public String getNewsImage() {
+        return newsImage;
     }
 }
