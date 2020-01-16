@@ -25,6 +25,8 @@ public class NewsListFragment extends Fragment {
     private ProgressBar progress;
     private RelativeLayout failureView;
     private RecyclerView newsRecycler;
+    private EditText searchInput;
+    private TextView toolbarTitle;
 
     @Nullable
     @Override
@@ -37,8 +39,8 @@ public class NewsListFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        final TextView toolbarTitle = (TextView) view.findViewById(R.id.toolbarTitle);
-        final EditText searchInput = (EditText) view.findViewById(R.id.searchInput);
+        toolbarTitle = (TextView) view.findViewById(R.id.toolbarTitle);
+        searchInput = (EditText) view.findViewById(R.id.searchInput);
 
         final ImageView searchAction = (ImageView) view.findViewById(R.id.actionSearch);
         searchAction.setOnClickListener(new View.OnClickListener() {
@@ -101,5 +103,15 @@ public class NewsListFragment extends Fragment {
                         failureView.setVisibility(View.VISIBLE);
                     }
                 });
+    }
+
+    public boolean canHandleBackPressed() {
+        boolean canHandleBackPressed = false;
+        if (searchInput.getVisibility() == View.VISIBLE) {
+            searchInput.setVisibility(View.GONE);
+            toolbarTitle.setVisibility(View.VISIBLE);
+            canHandleBackPressed = true;
+        }
+        return canHandleBackPressed;
     }
 }
