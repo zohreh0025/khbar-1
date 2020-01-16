@@ -9,8 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import retrofit2.Call;
@@ -33,6 +36,18 @@ public class NewsListFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        final TextView toolbarTitle = (TextView) view.findViewById(R.id.toolbarTitle);
+        final EditText searchInput = (EditText) view.findViewById(R.id.searchInput);
+
+        final ImageView searchAction = (ImageView) view.findViewById(R.id.actionSearch);
+        searchAction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toolbarTitle.setVisibility(View.GONE);
+                searchInput.setVisibility(View.VISIBLE);
+            }
+        });
 
         final Networking networking = new Networking();
 
