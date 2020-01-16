@@ -28,22 +28,7 @@ public class Networking {
         server = retrofit.create(NewsListServer.class);
     }
 
-    public void getNewsList() {
-        server.getNewsList()
-                .enqueue(new Callback<ServerResponse>() {
-                    @Override
-                    public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
-                        ServerResponse serverResponse = response.body();
-                        for (int i = 0; i < serverResponse.getRoot().size(); i++) {
-                            System.out.println("Title: " + serverResponse.getRoot().get(i).getNewsTitle());
-                            System.out.println("Description: " + serverResponse.getRoot().get(i).getNewsDescription());
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<ServerResponse> call, Throwable t) {
-
-                    }
-                });
+    public NewsListServer getServer() {
+        return server;
     }
 }

@@ -8,9 +8,9 @@ import java.util.List;
 
 public class ServerResponse {
 
-    private List<NewsData> root;
+    private NewsData[] root;
 
-    public List<NewsData> getRoot() {
+    public NewsData[] getRoot() {
         return root;
     }
 
