@@ -32,10 +32,16 @@ public class NewsListFragment extends Fragment {
         NewsAdapter adapter = new NewsAdapter(newsArray, new NewsItemClickListener() {
             @Override
             public void onClick(NewsData data) {
+                Bundle bundle = new Bundle();
+                bundle.putString("newsTitle", data.getTitle());
+                bundle.putString("newsDescription", data.getDescription());
+                bundle.putString("newsImage", data.getImage());
+                NewsDetailFragment detailFragment = new NewsDetailFragment();
+                detailFragment.setArguments(bundle);
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
                         .addToBackStack(null)
-                        .replace(R.id.fragmentContainer, new NewsDetailFragment())
+                        .replace(R.id.fragmentContainer, detailFragment)
                         .commit();
             }
         });
