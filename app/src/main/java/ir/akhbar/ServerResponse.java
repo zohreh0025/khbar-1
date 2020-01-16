@@ -8,10 +8,10 @@ import java.util.List;
 
 public class ServerResponse {
 
-    private NewsData[] root;
+    private NewsData[] articles;
 
-    public NewsData[] getRoot() {
-        return root;
+    public NewsData[] getArticles() {
+        return articles;
     }
 
 }

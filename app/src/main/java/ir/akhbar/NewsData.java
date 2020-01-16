@@ -2,19 +2,19 @@ package ir.akhbar;
 
 public class NewsData {
 
-    private String newsTitle;
-    private String newsDescription;
-    private String newsImage;
+    private String title;
+    private String description;
+    private String urlToImage;
 
     public String getNewsTitle() {
-        return newsTitle;
+        return title;
     }
 
     public String getNewsDescription() {
-        return newsDescription;
+        return description;
     }
 
     public String getNewsImage() {
-        return newsImage;
+        return urlToImage;
     }
 }

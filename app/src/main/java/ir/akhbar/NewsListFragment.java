@@ -55,13 +55,13 @@ public class NewsListFragment extends Fragment {
 
     private void fetchData(Networking networking) {
         networking.getServer()
-                .getNewsList()
+                .getNewsList("America", "6fba2629782d465abd2dc5f427223cc0")
                 .enqueue(new Callback<ServerResponse>() {
                     @Override
                     public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
                         progress.setVisibility(View.GONE);
                         ServerResponse serverResponse = response.body();
-                        NewsAdapter adapter = new NewsAdapter(serverResponse.getRoot(), new NewsItemClickListener() {
+                        NewsAdapter adapter = new NewsAdapter(serverResponse.getArticles(), new NewsItemClickListener() {
                             @Override
                             public void onClick(NewsData data) {
                                 Bundle bundle = new Bundle();

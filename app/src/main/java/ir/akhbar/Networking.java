@@ -22,7 +22,7 @@ public class Networking {
         Retrofit retrofit = new Retrofit.Builder()
                 .client(client2)
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl("https://api.myjson.com/")
+                .baseUrl("https://newsapi.org/")
                 .build();
 
         server = retrofit.create(NewsListServer.class);
